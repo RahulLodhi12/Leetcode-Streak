@@ -14,11 +14,11 @@ class Solution {
         String t="";
 
         for(int i=0;i<s.length();i++){
-            if(!Character.isLetterOrDigit(s.charAt(i))){
+            if(!Character.isLetterOrDigit(s.charAt(i))){ //check for Alpha-numeric
                 continue;
             }
 
-            char ch= Character.toLowerCase(s.charAt(i));
+            char ch= Character.toLowerCase(s.charAt(i)); //toLowerCase
             t+=ch;
         }
 
