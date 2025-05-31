@@ -9,28 +9,61 @@
  * }
  */
 class Solution {
+    public ListNode mergeList(ListNode l, ListNode r){
+        ListNode dummy = new ListNode(-1);
+        ListNode ptr = dummy;
+
+        while(l!=null && r!=null){
+            if(r.val<=l.val){
+                ptr.next = r;
+                r=r.next;
+                ptr=ptr.next;
+            }
+            else{
+                ptr.next = l;
+                l=l.next;
+                ptr=ptr.next;
+            }
+        }
+
+        while(l!=null){
+            ptr.next=l;
+            l=l.next;
+            ptr=ptr.next;
+        }
+
+        while(r!=null){
+            ptr.next=r;
+            r=r.next;
+            ptr=ptr.next;
+        }
+
+        return dummy.next;
+    }
+    public ListNode divide(ListNode head){
+        //base case
+        if(head==null || head.next==null) return head;
+
+        //find mid
+        ListNode s=head;
+        ListNode f=head.next;
+        while(f!=null && f.next!=null){
+            s=s.next;
+            f=f.next.next;
+        }
+
+        ListNode left = head;
+        ListNode right = s.next; 
+        s.next=null;
+
+        left = divide(left);
+        right = divide(right);
+
+        return mergeList(left,right);
+    }
     public ListNode sortList(ListNode head) {
-        //Brute Force - T.C: O(n)+O(n)+O(nlog)(sorting) , S.C: O(n) [List]
-        List<Integer> lst = new ArrayList<>();
+        if(head==null) return head;
 
-        ListNode p = head;
-
-        while(p!=null){
-            lst.add(p.val);
-            p=p.next;
-        }
-
-        Collections.sort(lst);
-
-        ListNode t = head;
-
-        int k=0;
-        while(t!=null){
-            t.val = lst.get(k++);
-            t=t.next;
-        }
-
-        return head;
-
+        return divide(head);
     }
 }
