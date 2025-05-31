@@ -10,7 +10,7 @@
  */
 class Solution {
     public ListNode sortList(ListNode head) {
-        //Brute Force - T.C: O(n)+O(n), S.C: O(n) [List]
+        //Brute Force - T.C: O(n)+O(n)+O(nlog)(sorting) , S.C: O(n) [List]
         List<Integer> lst = new ArrayList<>();
 
         ListNode p = head;
