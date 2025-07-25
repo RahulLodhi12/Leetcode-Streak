@@ -1,25 +1,28 @@
 class Solution {
     public int maxSum(int[] nums) {
-        HashMap<Integer,Integer> mpp = new HashMap<>();
+        Set<Integer> st = new TreeSet<>();
 
         for(int i: nums){
-            mpp.put(i,mpp.getOrDefault(i,0)+1);
+            st.add(i);
         }
 
         int sum=0;
-        int largeNeg=Integer.MIN_VALUE;
-        int posCnt=0;
-        for(Map.Entry<Integer,Integer> i: mpp.entrySet()){
-            if(i.getKey()<0){
-                largeNeg = Math.max(largeNeg,i.getKey());
+        int neg=-1;
+        int zero=0;
+        for(int i: st){
+            if(i>0){
+                sum+=i;
             }
-            else{
-                posCnt++;
-                sum+=i.getKey();
+            else if(i<0){
+                neg=i;
+            }
+            else if(i==0){
+                zero++;
             }
         }
-        if(posCnt>0 && sum==0) return sum;
 
-        return sum==0 ? largeNeg : sum;
+        if(sum==0 && zero>0) return 0;
+
+        return sum==0?neg:sum;
     }
 }
