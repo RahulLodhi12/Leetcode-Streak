@@ -3,6 +3,7 @@ public:
     int numSubarraysWithSum(vector<int>& nums, int goal) {
         int n = nums.size();
         int i = 0, j = 0, sum = 0, cnt = 0, zero=0;
+        //count of prefix zeroes - no effect on sum/goal.
         while(j < n){
             sum+=nums[j];
             
@@ -11,7 +12,7 @@ public:
                     zero++;
                 }
                 else{
-                    zero=0;
+                    zero=0; //reset
                 }
                 sum-=nums[i];
                 i++;
