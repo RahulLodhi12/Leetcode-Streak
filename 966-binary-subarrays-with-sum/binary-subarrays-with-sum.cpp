@@ -1,8 +1,13 @@
 class Solution {
 public:
     int numSubarraysWithSum(vector<int>& nums, int goal) {
+        //Step 1: [count of subarrays sum<=goal] - [count of subarrays sum<=(goal-1)]
         return slidingWindow(nums,goal) - slidingWindow(nums,goal-1);
     }
+    //Step 2: general func. for both flows
+    //Same Logic Questions: 713 and 1248
+    //713. Subarray Product Less Than K
+    //1248. Count Number of Nice Subarrays
     int slidingWindow(vector<int>& nums, int goal){
         if(goal<0) return 0;
         int n=nums.size();
@@ -21,7 +26,6 @@ public:
 
             j++;
         }
-        cout<<res<<endl;
         return res;
     }
 };
