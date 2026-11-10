@@ -7,7 +7,7 @@ public:
     //Step 2: general func. for both flows
     //Same Logic Questions: 713 and 1248
     //713. Subarray Product Less Than K
-    //1248. Count Number of Nice Subarrays
+    //1248. Count Number of Nice Subarrays [Even/Odd -> 0/1]
     int slidingWindow(vector<int>& nums, int goal){
         if(goal<0) return 0;
         int n=nums.size();
