@@ -11,10 +11,10 @@ public:
         int n=nums.size();
         int i=0,j=0,res=0,sum=0;
         while(j<n){
-            sum+=(nums[j]%2);
+            sum+=(nums[j]%2); //Make it to 0/1 - Binary
 
             while(sum>k){
-                sum-=(nums[i]%2);
+                sum-=(nums[i]%2); //Make it to 0/1 - Binary
                 i++;
             }
             if(sum<=k){
