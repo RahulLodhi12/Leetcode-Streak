@@ -1,28 +1,25 @@
 class Solution {
 public:
-    //Approach 1: Sliding Window
+    //Approach 2: Hashing/Counting
     int numberOfSubarrays(vector<int>& nums, int k) {
-        //SAME Logic of Q. 930 Binary Subarrays with SUM
-        //[count subarrays with sum<=k] - [count subarrays with sum<=(k-1)]
-        return slidingWindow(nums,k) - slidingWindow(nums,k-1);
-    }
-
-    int slidingWindow(vector<int>& nums, int k){
+        //SAME Logic as: Subarray sum equals to K
+        //NOTE: check [sum - k] in hashing/map, where 'sum' is we'r calculating and k is given
         int n=nums.size();
         int i=0,j=0,res=0,sum=0;
+        map<int,int> mpp;
+        mpp[0]=1;
         while(j<n){
-            sum+=(nums[j]%2); //Make it to 0/1 - Binary
+            if(nums[j]%2==1){
+                sum+=(nums[j]%2);
+            } 
+            mpp[sum]++;
 
-            while(sum>k){
-                sum-=(nums[i]%2); //Make it to 0/1 - Binary
-                i++;
+            if(mpp.count(sum-k)){
+                res+=mpp[sum-k];
             }
-            if(sum<=k){
-                res+=(j-i+1);
-            }
+
             j++;
         }
-
         return res;
     }
 };
