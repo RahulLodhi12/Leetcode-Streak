@@ -13,6 +13,7 @@ public:
         //even-case
         sum=sum/2;
         memset(dp,-1,sizeof(dp));
+        //Same Logic as 'Subset Sum Problem' - GfG problem hai yeh
         return solve(n,nums,sum);
     }
     bool solve(int n, vector<int> nums, int sum){
