@@ -25,7 +25,7 @@ public:
         if(dp[n][sum]!=-1) return dp[n][sum];
 
         //take or skip - both choices
-        if(nums[n-1]<=sum)
+        if(nums[n-1]<=sum) //to avoid TLE
             return dp[n][sum] = solve(n-1,nums,sum-nums[n-1]) or solve(n-1,nums,sum);
         //only skip
         return dp[n][sum] = solve(n-1,nums,sum);
