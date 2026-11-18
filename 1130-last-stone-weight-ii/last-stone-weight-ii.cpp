@@ -15,7 +15,6 @@ public:
         //base case
         if(n==0){
             //s2: total-2*s1
-            cout<<total-2*sum<<" ";
             return abs(total-2*sum);
         }
 
