@@ -1,6 +1,7 @@
 class Solution {
 public:
     int dp[501][501];
+    //SAME LOGIC of LCS Pattern (Longest Common Subsequence)
     int maxUncrossedLines(vector<int>& nums1, vector<int>& nums2) {
         int n=nums1.size();
         int m=nums2.size();
